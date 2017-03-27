@@ -1,13 +1,17 @@
 package com.rrq.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * Created by Yassine on 2017-03-17.
  */
-//test
+@Document(collection = "Camionneurs")
 public class Camionneur {
+    @Id
+    private String utilisateur;
     private String nom;
     private String prenom;
-    private String utilisateur;
     private String password;
 
     public Camionneur(String nom, String prenom, String utilisateur, String password) {
@@ -15,6 +19,17 @@ public class Camionneur {
         this.prenom = prenom;
         this.utilisateur = utilisateur;
         this.password = password;
+    }
+
+    public Camionneur() {
+    }
+
+    public String getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(String utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     public String getNom() {
@@ -31,14 +46,6 @@ public class Camionneur {
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
-    }
-
-    public String getUtilisateur() {
-        return utilisateur;
-    }
-
-    public void setUtilisateur(String utilisateur) {
-        this.utilisateur = utilisateur;
     }
 
     public String getPassword() {
