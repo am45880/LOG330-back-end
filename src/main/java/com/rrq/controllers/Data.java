@@ -65,26 +65,18 @@ public class Data {
         List<Camion> camions = new ArrayList<Camion>();
         
         Camion camion1= new Camion("Rapide","Mercedez","PXF-894",new ArrayList<PointTrajet>());
-
         camion1.getTrajet().add(new PointTrajet("Pommes","J5X-8B7","1:40",1));
         camion1.getTrajet().add(new PointTrajet("Clavier","K5J-8T7","1:30",3));
         camion1.getTrajet().add(new PointTrajet("Ordinateur","K5G-8R2","1:00",2));
-
         camions.add(camion1);
 
         Camion camion2= new Camion("Amenagement","Honda","HTD-749",new ArrayList<PointTrajet>());
-
-
         camion2.getTrajet().add(new PointTrajet("Bureau","J5X-8B7","1:00",1));
         camion2.getTrajet().add(new PointTrajet("Chaise","K5J-8T7","1:04",2));
         camion2.getTrajet().add(new PointTrajet("Tapis","K5G-8R2","0:50",3));
-
         camions.add(camion2);
 
-
-
         camionsRepository.save(camions);
-        
         
         return "Les camions ont ete ajoute";
     }

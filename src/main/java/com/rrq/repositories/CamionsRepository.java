@@ -9,4 +9,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 public interface CamionsRepository extends MongoRepository<Camion,String> {
 
     public Camion findByNom(String nom);
+
+    public void deleteByNom(String nom);
 }

@@ -12,13 +12,14 @@ public class Camionneur {
     private String utilisateur;
     private String nom;
     private String prenom;
-    private String password;
+    private String motDePasse;
 
-    public Camionneur(String nom, String prenom, String utilisateur, String password) {
+
+    public Camionneur(String utilisateur, String nom, String prenom, String motDePasse) {
+        this.utilisateur = utilisateur;
         this.nom = nom;
         this.prenom = prenom;
-        this.utilisateur = utilisateur;
-        this.password = password;
+        this.motDePasse = motDePasse;
     }
 
     public Camionneur() {
@@ -48,11 +49,11 @@ public class Camionneur {
         this.prenom = prenom;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMotDePasse() {
+        return motDePasse;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 }
