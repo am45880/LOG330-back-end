@@ -10,4 +10,6 @@ public interface CamionneursRepository extends MongoRepository<Camionneur,String
 
     public Camionneur findByUtilisateur(String utilisateur);
 
+    public void deleteByUtilisateur(String utilisateur);
+
 }
