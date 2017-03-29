@@ -19,14 +19,10 @@ import java.util.List;
 @RequestMapping(value = "/data")
 public class Data {
 
-
+    ////////******************* Control Camions **************/////////////////////
 
     @Autowired
     CamionsRepository camionsRepository;
-
-
-
-    ////////******************* Control Camions **************/////////////////////
 
     @RequestMapping(value = "init_camions")
     public String initCamions(){

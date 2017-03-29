@@ -12,7 +12,7 @@ import java.util.List;
  * Created by Yassine on 2017-03-27.
  */
 @RestController
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/camionneur")
 public class CamionneursAPI {
 
@@ -26,9 +26,10 @@ public class CamionneursAPI {
         return camionneursRepository.findByUtilisateur(utilisateur);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    public void addCamionneur(@ModelAttribute Camionneur utilisateur, @RequestParam String nom){
-        camionneursRepository.insert(utilisateur);
+    @RequestMapping(value = "delete")
+    public void addCamionneur(@ModelAttribute Camionneur camionneur){
+        camionneursRepository.insert(camionneur);
+
     }
 
     @RequestMapping(method = RequestMethod.DELETE)
@@ -42,7 +43,7 @@ public class CamionneursAPI {
     }
 
 
-    @RequestMapping(value = "/init",method = RequestMethod.POST)
+    @RequestMapping(value = "/init",method = RequestMethod.GET)
     public String initCamionneurs(){
         camionneursRepository.deleteAll();
 
