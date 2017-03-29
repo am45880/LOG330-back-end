@@ -5,12 +5,14 @@ import com.rrq.repositories.CamionneursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Yassine on 2017-03-27.
  */
 @RestController
+//@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/camionneur")
 public class CamionneursAPI {
 
@@ -38,6 +40,23 @@ public class CamionneursAPI {
     public List<Camionneur> getAll(){
         return camionneursRepository.findAll();
     }
+
+
+    @RequestMapping(value = "/init",method = RequestMethod.POST)
+    public String initCamionneurs(){
+        camionneursRepository.deleteAll();
+
+        List<Camionneur> camionneurs = new ArrayList<Camionneur>();
+
+        camionneurs.add(new Camionneur("Backo","End","bend","lolo"));
+        camionneurs.add(new Camionneur("Tim","Cook","apple","croco"));
+        camionneurs.add(new Camionneur("Steve","Job","iphone","California"));
+
+        camionneursRepository.save(camionneurs);
+
+        return "Les camionneurs ont ete ajoutes.";
+    }
+
 
     //Util API
 

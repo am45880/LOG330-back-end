@@ -19,41 +19,11 @@ import java.util.List;
 @RequestMapping(value = "/data")
 public class Data {
 
-    @Autowired
-    CamionneursRepository camionneursRepo;
+
 
     @Autowired
     CamionsRepository camionsRepository;
 
-
-    ////////******************* Control Camionneurs **************/////////////////////
-
-
-    @RequestMapping(value = "/init_camionneurs")
-    public String initCamionneurs(){
-        camionneursRepo.deleteAll();
-
-        List<Camionneur> camionneurs = new ArrayList<Camionneur>();
-
-        camionneurs.add(new Camionneur("Backo","End","bend","lolo"));
-        camionneurs.add(new Camionneur("Tim","Cook","apple","croco"));
-        camionneurs.add(new Camionneur("Steve","Job","iphone","California"));
-
-        camionneursRepo.save(camionneurs);
-
-        return "Les camionneurs ont ete ajoutes.";
-    }
-
-    @RequestMapping(value = "/delete_camionneurs")
-    public String deleteCamionneurs(){
-        camionneursRepo.deleteAll();
-        return "Les camionneurs ont ete suprimes";
-    }
-
-    @RequestMapping(value = "/camionneurs")
-    public List<Camionneur> camionneur(){
-        return camionneursRepo.findAll();
-    }
 
 
     ////////******************* Control Camions **************/////////////////////

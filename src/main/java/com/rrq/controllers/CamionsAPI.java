@@ -35,6 +35,7 @@ public class CamionsAPI {
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Camion> getAll(){
+
         return camionsRepository.findAll();
     }
 
