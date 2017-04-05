@@ -26,16 +26,22 @@ public class CamionneursAPI {
         return camionneursRepository.findByUtilisateur(utilisateur);
     }
 
-    @RequestMapping(value = "delete")
+    @RequestMapping(method = RequestMethod.POST)
     public void addCamionneur(@ModelAttribute Camionneur camionneur){
         camionneursRepository.insert(camionneur);
-
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(value="/delete",method = RequestMethod.POST)
     public void deleteCamionneur(@RequestParam String utilisateur){
-        camionneursRepository.deleteByUtilisateur(utilisateur);
+        this.camionneursRepository.deleteByUtilisateur(utilisateur);
     }
+
+    @RequestMapping(value="/all",method = RequestMethod.DELETE)
+    public void deleteAllCamionneur(){
+        camionneursRepository.deleteAll();
+    }
+
+
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     public List<Camionneur> getAll(){
@@ -56,19 +62,6 @@ public class CamionneursAPI {
         camionneursRepository.save(camionneurs);
 
         return "Les camionneurs ont ete ajoutes.";
-    }
-
-
-    //Util API
-
-    @RequestMapping(value = "/auth",method = RequestMethod.DELETE)
-    public String authenticate(@RequestParam String utilisateur , @RequestParam String motDePasse){
-        Camionneur camionneur = camionneursRepository.findByUtilisateur("Utilisateur");
-        if(motDePasse.equals(camionneur.getMotDePasse())){
-            return "success";
-        }else {
-            return "false";
-        }
     }
 
 }

@@ -18,17 +18,17 @@ public class CamionsAPI {
     @Autowired
     CamionsRepository camionsRepository;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(value = "/camion_by_nom",method = RequestMethod.POST)
     public Camion selectCamion(@RequestParam String nom){
         return camionsRepository.findByNom(nom);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public void addCamion(@ModelAttribute Camion nom){
-        camionsRepository.insert(nom);
+    public void addCamion(@ModelAttribute Camion camion){
+        camionsRepository.insert(camion);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
     public void deleteCamion(@RequestParam String nom){
         camionsRepository.deleteByNom(nom);
     }
@@ -38,7 +38,14 @@ public class CamionsAPI {
         return camionsRepository.findAll();
     }
 
-    // Access to the trajet
+
+    @RequestMapping(value = "/save",method = RequestMethod.POST)
+    public void saveCamionneur(@RequestBody Camion camion){
+
+       System.out.println(camion);
+
+       this.camionsRepository.save(camion);
+    }
 
     @RequestMapping(value = "/trajet",method = RequestMethod.PUT)
     public void modifTrajet(@ModelAttribute List<PointTrajet> trajet, @RequestParam String nom){
